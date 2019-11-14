@@ -1,9 +1,8 @@
-// JUST A TEMPLATE TO COPY AND PASTE
+// Major Project
 // Jenna Doucette
-// Date
+// started nov 14th 
 
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+
 
 function setup() {  
   createCanvas(windowWidth, windowHeight);
