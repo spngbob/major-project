@@ -1,17 +1,20 @@
 look at a cheat sheet (markdown github cheatsheet)
 
-# Major Project Proposal - idle clicker game maybe perhaps 
+# Major Project Proposal - Canadian Clicker
 
 ## *first description*
-here is where I explain what im going to build for my major project. 
+
+An idle clicker game that collects money and lets you buy things
 
 ## *need to have list*
-  - thing 1
-  - thing 2
-  - thing 3
+  - "money" collection
+  - ways to increase amount of money gotten
+  - "upgrades" to purchase 
+  - "store"
+  - a nice looking thing to click on? maybe a loonie
 
 ## *nice to have list*
-  - thang 1 
-  - thang 2
-  - thang 3
+  - graphics when you click the thing
+  - background music
+  - noise when clicked
   
