@@ -1,6 +1,6 @@
 look at a cheat sheet (markdown github cheatsheet)
 
-# Major Project Proposal
+# Major Project Proposal - idle clicker game maybe perhaps ? ? ? ? ? ? ? ? ? ? 
 
 
 ## *first description*
