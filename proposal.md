@@ -1,12 +1,6 @@
 # MAJOR PROJECT PROPOSAL - CLICKER GAME
 
-<<<<<<< HEAD
 ## DESCRIPTION
-=======
-# Major Project Proposal - idle clicker game maybe perhaps ? ? ? ? ? ? ? ? ? ? 
-
->>>>>>> parent of 57ee848... ;)
-
 I want to make a clicker game in which someone clicks on the item in the middle to get money. Every few seconds they get another set base amount of money, and then can purchase upgrades to increase money "production". I want to make a store in which the upgrades can be bought, as well as add different noises for each location the user can click on (store, purchases, sprite, etc). I don't think there will ever be an end to the game, but there will be a limited amount of upgrades that they can get. 
 
 
