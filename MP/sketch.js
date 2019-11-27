@@ -1,6 +1,6 @@
 // major project
 // jenna doucette
-// started november 14th
+// started november 14th 
 
 let level = 0;
 let levels = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
