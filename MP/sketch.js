@@ -2,7 +2,7 @@
 // jenna doucette
 // started november 14th 
 
-let level = 0;
+let level = 6;
 let levels = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 let levelOne; // level 
 let balance = 0; // money balance
@@ -53,20 +53,20 @@ function mouseClicked(){ // changes balance rigght now based on how many times y
     balance = balance + bonus;
     fill(0, 0, 0, 150);
   }
-  if (balance > 50){
+
+  if (balance === baseCost ){
+    let baseCost = costIncrease * baseCost;
     createSale();
+    console.log("yeehaw");
   }
 }
 
 class upgrade{
-  constructor(x, y, xl, yl, r, g, b, cost){
+  constructor(x, y, xl, yl, cost){
     this.x = x;
     this.y = y;
     this.xl = xl;
     this.yl = yl; 
-    this.r = r;
-    this.g = g;
-    this.b = b;
     this.cost = cost;
   }
   
@@ -79,7 +79,7 @@ class upgrade{
 
 function createSale(){
   for (let i = 0; i < 1; i ++){
-    let salebutton = new upgrade(width/2-50, height/2-50, 200, 200, 255, 0, 0, baseCost)
+    let salebutton = new upgrade(width/2-50, height/2-50, 200, 200, baseCost)
     baseCost = baseCost * costIncrease;
     sales.push(salebutton);
     salebutton.display();
