@@ -3,11 +3,9 @@
 // started november 14th 
 
 let level = 6;
-let levels = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
-let levelOne; // level 
+let levelscol = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 let balance = 0; // money balance
 let income = 3; // how much your income is, going to be changed. 
-let incomeSpeed = 2; // how often you get your "paycheck" 
 let bonus = 1;
 let costIncrease = 1.1;
 let baseCost = 50;
@@ -45,7 +43,7 @@ function createSprite(){
   // creates the current square-esque sprite
   noStroke();
   rect(width/2-50, height/2-50, 100, 100);
-  fill(levels[level]);
+  fill(level[levelscol]);
 }
 
 function mouseClicked(){ // changes balance rigght now based on how many times you clicked. 
@@ -61,27 +59,3 @@ function mouseClicked(){ // changes balance rigght now based on how many times y
   }
 }
 
-class upgrade{
-  constructor(x, y, xl, yl, cost){
-    this.x = x;
-    this.y = y;
-    this.xl = xl;
-    this.yl = yl; 
-    this.cost = cost;
-  }
-  
-  display(){
-    noStroke();
-    fill(this.r, this.g, this.b, 100);
-    rect(this.x, this.y, this.xl, this.yl)
-  }
-}
-
-function createSale(){
-  for (let i = 0; i < 1; i ++){
-    let salebutton = new upgrade(width/2-50, height/2-50, 200, 200, baseCost)
-    baseCost = baseCost * costIncrease;
-    sales.push(salebutton);
-    salebutton.display();
-  }
-}
