@@ -13,7 +13,7 @@
 // income level five = 16 and etc etc etc !!!!!!!
 
 
-let balance = 0; // money balance
+let money = 0; // money balance
 let income = 3; // how much your income is, going to be changed. 
 let bonus = 1;
 let cost = 50;
@@ -25,11 +25,15 @@ let sales = [];
 
 function preload() {
   img = loadImage('assets/background.jfif');
+  sprite = loadImage('assets/actualcookie.png');
 }
 
 function setup() {  
   createCanvas(windowWidth, windowHeight);
-  image(img, 100, 100);
+  imageMode(CENTER);
+  image(img, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
+  image(sprite, windowWidth/2, windowHeight/2, 100, 100 );
+  fill(255);
 }
 
 
@@ -39,10 +43,9 @@ function windowResized(){
 
 
 function draw() {
-  createSprite(); // shows image/sprite to be clicked on 
-  console.log(balance);
-  textSize(((height+width)/2)/50);
-  text("$" + balance, windowWidth/2-25, windowHeight/2-windowHeight/6);
+  console.log(money);
+  textSize(((height+width)/2)/30);
+  text("$" + money, windowWidth/2-25, windowHeight/2-windowHeight/6);
   
 }
 
@@ -54,25 +57,22 @@ function createSale(){
   }
 
 
-function createSprite(){
-  // creates the current square-esque sprite
-  noStroke();
-  rect(width/2-50, height/2-50, 100, 100);
-  fill("red");
-}
+
 
 
 function mouseClicked(){ // changes balance rigght now based on how many times you clicked. 
   if (mouseX > width/2 - 50 && mouseX < width/2 + 50 && mouseY > height/2 - 50 && mouseY < height/2 + 50) {
-    balance = balance + income;
-    fill(0, 0, 0, 150);
+    money = money + income;
     checkBalance();
+    image(sprite, windowWidth/2, windowHeight/2, 140, 140 );
+    setup();
+
   }
 }
 
 
 function checkBalance(){
-  if (balance === cost){
+  if (money === cost){
     let cost = costIncrease + cost;
     createSale();
   }
