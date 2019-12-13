@@ -4,21 +4,22 @@
 
 
 let money = 0; // money balance
-let income = 15; // how much your income is, going to be changed. 
+let income = 5; // how much your income is, going to be changed. 
 let bonus = 1;
-let cost = 50;
-let costIncrease = 70;
-let x = windowWidth;
-let y = windowHeight;
-
-
+let cost = 25;
+let costIncrease = 5 * bonus;
+// let x = windowWidth;
+//let y = windowHeight;
 
 let sales = [];
 
 function preload() {
   img = loadImage('assets/background.jfif');
   sprite = loadImage('assets/actualcookie.png');
+  let x = windowWidth;
+  let y = windowHeight;
 }
+
 
 function setup() {  
   createCanvas(windowWidth, windowHeight);
@@ -39,15 +40,8 @@ function draw() {
   console.log(money);
   textSize(((height+width)/2)/30);
   text("$" + money, windowWidth/2-50, windowHeight/2-windowHeight/6);
-  if (money >= cost){
-    cost = costIncrease + cost;
-    rect(windowWidth/4, windowHeight/3+windowHeight/3, 2*windowWidth/4, 2*windowHeight/2);
-    console.log("WOWWWWWWWWWWWWWWWWWWWWWWWWWWW");
-  }}
-
-
-
-
+  
+}
 
 
 function mousePressed(){ // changes balance rigght now based on how many times you clicked. 
@@ -56,4 +50,40 @@ function mousePressed(){ // changes balance rigght now based on how many times y
     image(sprite, windowWidth/2, windowHeight/2, 140, 140 );
     setup();
   }
+  if (money >= cost){
+    noStroke();
+    rect(100, 100, 100, 100);
+    if ((mouseX > 100 && mouseX < 200 && mouseY > 100&& mouseY < 200) &&  mouseIsPressed === true){
+      if (cost < 2500){
+        buyInfo(2);
+        bonus = 2;
+      }
+
+      else if (cost < 5000){
+        buyInfo(5);
+        bonus = 5;
+    
+      }
+      else if (cost < 10000){
+        buyInfo(10);
+        bonus = 10;
+    
+      }
+    else{
+      console.log(mouseX, mouseY);
+    }
+  }
+}
+}
+
+
+function buyInfo(multiplier){
+  money = money - cost;
+  cost = cost + costIncrease;
+  income = income + multiplier*bonus;
+  costIncrease = costIncrease * multiplier;
+  bonus = multiplier;
+  console.log("cost = " + cost); 
+  console.log("income = " + income);
+  setup();
 }
