@@ -5,17 +5,16 @@ I want to make a clicker game in which someone clicks on the item in the middle 
 
 
 ## NEED TO HAVES:
-  - "money" collection
-  - thing-to-be-clicked-on sprite (loonie? gold coin? cookie? (sorry aric)?)
-  - permanent upgrades to be purchased
+  - "money" collection ✔
+  - permanent upgrades to be purchased 
     - sprite upgrades, make them look different
     - speed up money production
-    - more money per click
+    - more money per click ✔
   - A store to purchase the upgrades in
-  - a coin to click on to get money
+  - a coin to click on to get money ✔
   - noise/graphics when clicked
   - background music
-  - a nice background, maybe not just a plain colour?
+  - a nice background, maybe not just a plain colour? ✔
 
 ## NICE TO HAVES:
   - restart game when you get to a certain point and start again with better original 

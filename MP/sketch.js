@@ -8,8 +8,6 @@ let income = 5; // how much your income is, going to be changed.
 let bonus = 1;
 let cost = 25;
 let costIncrease = 5 * bonus;
-// let x = windowWidth;
-//let y = windowHeight;
 
 let sales = [];
 
@@ -33,6 +31,7 @@ function setup() {
 
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
+  setup();
 }
 
 
@@ -67,7 +66,11 @@ function mousePressed(){ // changes balance rigght now based on how many times y
       else if (cost < 10000){
         buyInfo(10);
         bonus = 10;
-    
+      }
+      else if (cost < 20000){
+        buyInfo(25);
+        bonus = 25;
+
       }
     else{
       console.log(mouseX, mouseY);
@@ -81,7 +84,7 @@ function buyInfo(multiplier){
   money = money - cost;
   cost = cost + costIncrease;
   income = income + multiplier*bonus;
-  costIncrease = costIncrease * multiplier;
+  costIncrease = int(costIncrease * (multiplier * 1.001111));
   bonus = multiplier;
   console.log("cost = " + cost); 
   console.log("income = " + income);
