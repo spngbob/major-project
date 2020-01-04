@@ -57,93 +57,89 @@ let b6Owned = 0
 let b6Color = 255
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(255);
-  frameRate(60);
+	createCanvas(windowWidth, windowHeight);
+	background(255);
+	frameRate(60);
 
 }
 
 function draw(){
-  drawCookie();
-  textSize(20);
-  text("cookies" + nf(cookies, 0, 2), 20, 46);
-  stroke(1);
+	drawCookie();
+	textSize(20);
+	text("cookies" + nf(cookies, 0, 2), 20, 46);
+    stroke(1);
 
   // calculating clicks per minuet
-  fill(0);
-  textSize(15);
-  text("CPS: " + nf(cps, 0, 2), 20, 46);
-  cookies = cookies + cps * 1/60;
-  cps = b1Owned*1 + b2Owned*5 + b3Owned*10 + b4Owned*25 + b5Owned*50 + b6Owned*100;
+	fill(0);
+	textSize(15);
+	text("CPS: " + nf(cps, 0, 2), 20, 46);
+	cookies = cookies + cps * 1/60;
+	cps = b1Owned*1 + b2Owned*5 + b3Owned*10 + b4Owned*25 + b5Owned*50 + b6Owned*100;
 
 // I T E M S 
 
 // baker 1 
-  fill(b1Color);
-  rect(20, 50, 250, 75);
-  fill(0);
+	fill(b1Color);
+	rect(20, 50, 250, 75);
+	fill(0);
 
-  textSize(14);
-  text("Buy Pastry Chef. (1 CPS)", 25, 65);
-  text("Price: C " + nf(b1Cost, 0, 2), 25, 83);
-  text("Owned:", 25, 100);
-  text(b1Owned, 25, 120);
+	textSize(14);
+	text("Buddy Valastro (1 CPS)", 25, 65);
+	text("Price: C " + nf(b1Cost, 0, 2), 25, 83);
+	text("Level " + b1Owned, 25, 100);
 
-  b1Cost =  15 * pow(1.07, b1Owned);
+	b1Cost =  15 * pow(1.07, b1Owned);
 
-// baker 2
+	// baker 2
 
-  fill(b2Color);
-  rect(20, 130, 250, 75);
-  fill(0);
+	fill(b2Color);
+	rect(20, 130, 250, 75);
+	fill(0);
 
-  textSize(14);
-  text("Buy Bread Baker (5 CPS)", 25, 145);
-  text("Price: C " + nf(b2Cost, 0, 2), 25, 163);
-  text("Owned:", 25, 180);
-  text(b2Owned, 25, 200);
+	textSize(14);
+	text("Marth Stewart (5 CPS)", 25, 145);
+	text("Price: C " + nf(b2Cost, 0, 2), 25, 163);
+	text("Level ", 25, 180);
+	text(b2Owned, 25, 200);
 
-  b2Cost =  200 * pow(1.07, b2Owned);
+	b2Cost =  200 * pow(1.07, b2Owned);
 
-// baker 3
+	// baker 3
 
-  fill(b3Color);
+	fill(b3Color);
 	rect(20, 210, 250, 75);
 	fill(0);
 	
 	textSize(14);
-	text("Buy Cake Baker (10 CPS)", 25, 225);
+	text("Paul Hollywood (10 CPS)", 25, 225);
 	text("Price: C " + nf(b3Cost, 0, 2), 25, 243);
-	text("Owned:", 25, 260);
-	text(b3Owned, 25, 280);
+	text("Level " + b3Owned, 25, 260);
 	
 	b3Cost =  1000 * pow(1.07, b3Owned);
 
 // baker 4
 
-  fill(b4Color);
-  rect(20, 290, 250, 75);
-  fill(0);
+	fill(b4Color);
+	rect(20, 290, 250, 75);
+	fill(0);
 
-  textSize(14);
-  text("Buy Super Baker (25 CPS)", 25, 305);
-  text("Price: C " + nf(b4Cost, 0, 2), 25, 323);
-  text("Owned:", 25, 340);
-  text(b4Owned, 25, 360);
+	textSize(14);
+	text("Stella Parks (25 CPS)", 25, 305);
+	text("Price: C " + nf(b4Cost, 0, 2), 25, 323);
+	text("Level " + b4Owned, 25, 340);
 
-  b4Cost =  2000 * pow(1.07, b4Owned);
+	b4Cost =  2000 * pow(1.07, b4Owned);
 
-// baker 5 
+	// baker 5 
 
-  fill(b5Color);
-  rect(20, 370, 250, 75);
-  fill(0);
+	fill(b5Color);
+	rect(20, 370, 250, 75);
+	fill(0);
 
-  textSize(14);
-  text("Buy Godtier Baker (50 CPS)", 25, 385);
-  text("Price: C " + nf(b5Cost, 0, 2), 25, 403);
-  text("Owned:", 25, 420);
-  text(b5Owned, 25, 440);
+	textSize(14);
+	text("Alton Brown (50 CPS)", 25, 385);
+	text("Price: C " + nf(b5Cost, 0, 2), 25, 403);
+	text("Level " + b5Owned, 25, 420);
 
   b5Cost =  50000 * pow(1.07, b5Owned);
 
@@ -154,9 +150,9 @@ function draw(){
 	fill(0);
 	
 	textSize(14);
-	text("Buy Gordon Ramsey (100 CPS)", 25, 465);
+	text("Claire Saffitz (100 CPS)", 25, 465);
 	text("Price: C " + nf(b6Cost, 0, 2), 25, 483);
-	text("Owned:", 25, 500);
+	text("Level " + b6Owned, 25, 500);
 	text(b6Owned, 25, 520);
 	
 	b6Cost =  100000 * pow(1.07, b6Owned);
@@ -164,16 +160,16 @@ function draw(){
 
 
   // b1 highlighter 
-  if(cookies < b1Cost) {
-		b1Color = 200
-  } 
-  else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 50 && mouseY > 50 + 75 && cookies >= b1Cost) {
-		b1Color = 255
-  } 
-  else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies < b1Cost) {
-		b1Color = 200
-  } 
-  else {
+	if(cookies < b1Cost) {
+			b1Color = 200
+	} 
+	else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 50 && mouseY > 50 + 75 && cookies >= b1Cost) {
+			b1Color = 255
+	} 
+	else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies < b1Cost) {
+			b1Color = 200
+	} 
+	else {
 		b1ClickerColor = 255
 	} 
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= b1Cost) {
@@ -197,14 +193,14 @@ function draw(){
 	// b3 highlighter 
 	if (cookies < b3Cost) {
 		b3Color = 200
-  } 
-  else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 210 && mouseY > 210 + 75 && cookies >= b3Cost) {
-		b3Color = 255
-  } 
-  else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies < b3Cost) {
-    b3Color = 200
-  } 
-  else {
+	} 
+	else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 210 && mouseY > 210 + 75 && cookies >= b3Cost) {
+			b3Color = 255
+	} 
+	else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies < b3Cost) {
+		b3Color = 200
+	} 
+	else {
 		b3Color = 255
 	} 
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies >= b3Cost) {
@@ -214,14 +210,14 @@ function draw(){
 	// b4 highlighter
 	if(cookies < b4Cost) {
 		b4Color = 200
-  } 
-  else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 290 && mouseY > 290 + 75 && cookies >= b4Cost) {
-		b4Color = 255
-  } 
-  else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies < b4Cost) {
-		b4Color = 200
-  }
-  else {
+	} 
+	else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 290 && mouseY > 290 + 75 && cookies >= b4Cost) {
+			b4Color = 255
+	} 
+	else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies < b4Cost) {
+			b4Color = 200
+	}
+	else {
 		b4Color = 255
 	} 
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies >= b4Cost) {
@@ -254,11 +250,11 @@ function draw(){
 	} 
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies >= b6Cost) {
 		b6Color = 245
-  }
-  
+}
+
 
   // lines for shop
-  for(i = 0; i < 461; i = i + 80) {
+	for(i = 0; i < 461; i = i + 80) {
 		line(200, i + 50, 200, i + 125);
 	}
 
@@ -274,9 +270,9 @@ function draw(){
 
 // space clicker
 function keyPressed () {
-  if (key == " ") {
+	if (key == " ") {
     cookies++
-  }
+}
 }
 
 
@@ -295,6 +291,7 @@ function mouseReleased() {
 		cookieY = cookieY + 5; 
 		cookieH = cookieH - 10; 
 		cookieW = cookieW - 10; 
+		setup();
 	}
 }
 
