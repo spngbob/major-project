@@ -71,8 +71,8 @@ function draw(){
 
   // calculating clicks per minuet
 	fill(0);
-	textSize(15);
-	text("CPS: " + nf(cps, 0, 2), 20, 46);
+	textSize(20);
+	text("cps: " + nf(cps, 0, 2), 200, 46);
 	cookies = cookies + cps * 1/60;
 	cps = b1Owned*1 + b2Owned*5 + b3Owned*10 + b4Owned*25 + b5Owned*50 + b6Owned*100;
 
