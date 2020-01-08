@@ -7,14 +7,14 @@ I want to make a clicker game in which someone clicks on the item in the middle 
 ## NEED TO HAVES:
   - "money" collection ✔
   - permanent upgrades to be purchased 
-    - sprite upgrades, make them look different
-    - speed up money production
+    -                                                             sprite upgrades, make them look different 
+    - speed up money production ✔
     - more money per click ✔
-  - A store to purchase the upgrades in
+  - A store to purchase the upgrades in ✔
   - a coin to click on to get money ✔
-  - noise/graphics when clicked
-  - background music
-  - a nice background, maybe not just a plain colour? ✔
+  - noise/graphics when clicked ✔
+  -                                                                 background music
+  - a nice background, maybe not just a plain colour? ✔ // changed my mind and liked the minimalist look 
 
 ## NICE TO HAVES:
   - restart game when you get to a certain point and start again with better original 
@@ -24,7 +24,7 @@ I want to make a clicker game in which someone clicks on the item in the middle 
     - like diamonds in any IOS game meant for kids
     - timed upgrades
     - whole other section of store 
-  - pop up for the store instead of switching whole screen
+  - pop up for the store instead of switching whole screen ✔ 
   - fun graphics instead of boring ones
   - works with different resolutions
   

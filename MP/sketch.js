@@ -6,25 +6,30 @@
 let cookies = 0; //  balance of cookies 
 let cps = 0; //  cookies per click
 
-let windowWidth = 750;
-let windowHeight = 750;
-
-
 function preload() {
-  cookieImage = loadImage('assets/sprite.png');
-  //  upgrades
-  b1 = loadImage('assets/baker_1.png');
-  b2 = loadImage('assets/baker_2.png');
-  b3 = loadImage('assets/baker_3.png');
-  b4 = loadImage('assets/baker_4.png');
-  b5 = loadImage('assets/baker_5.png');
-  b6 = loadImage('assets/baker_6.png');
+	cookieImage = loadImage('assets/sprite.png');
+	//  upgrades
+	b1 = loadImage('assets/baker_1.png');
+	b2 = loadImage('assets/baker_2.png');
+	b3 = loadImage('assets/baker_3.png');
+	b4 = loadImage('assets/baker_4.png');
+	b5 = loadImage('assets/baker_5.png');
+	b6 = loadImage('assets/baker_6.png');
+
+
+	if (windowWidth > 700){
+		cookieW = windowWidth/5;
+		cookieH = windowWidth/5; 
+		cookieX = windowWidth/2-cookieW/2;
+		cookieY = windowHeight/2-cookieH/2;}
+	else{
+		cookieW = 100;
+		cookieH = 100;
+		cookieX =  300;
+		cookieY = 300;
+	}
 }
 
-let cookieX = windowWidth/2;
-let cookieY = windowHeight/2;
-let cookieW = windowWidth/5;
-let cookieH = windowHeight/5; 
 
 // Baker 1
 let b1Cost = 15;
@@ -64,17 +69,18 @@ function setup() {
 }
 
 function draw(){
+	background(255);
 	drawCookie();
-	textSize(20);
-	text("cookies" + nf(cookies, 0, 2), 20, 46);
-    stroke(1);
-
-  // calculating clicks per minuet
+	textSize(15);
+	
+	// calculating clicks per minuet
 	fill(0);
-	textSize(20);
-	text("cps: " + nf(cps, 0, 2), 200, 46);
+	text("cookies: " + nf(cookies, 0, 2), 20, 15);
+	text("cookies/click = " +(1+b4Owned*25+b5Owned*50+b6Owned*100), 20, 45)
+	text("cps: " + nf(cps, 0, 2), 20, 30);
 	cookies = cookies + cps * 1/60;
-	cps = b1Owned*1 + b2Owned*5 + b3Owned*10 + b4Owned*25 + b5Owned*50 + b6Owned*100;
+	cps = b1Owned*1 + b2Owned*5 + b3Owned*10 + b4Owned*25 ;
+	
 
 // I T E M S 
 
@@ -97,10 +103,9 @@ function draw(){
 	fill(0);
 
 	textSize(14);
-	text("Marth Stewart (5 CPS)", 25, 145);
+	text("Martha Stewart (5 CPS)", 25, 145);
 	text("Price: C " + nf(b2Cost, 0, 2), 25, 163);
-	text("Level ", 25, 180);
-	text(b2Owned, 25, 200);
+	text("Level " + b2Owned, 25, 180);
 
 	b2Cost =  200 * pow(1.07, b2Owned);
 
@@ -124,7 +129,7 @@ function draw(){
 	fill(0);
 
 	textSize(14);
-	text("Stella Parks (25 CPS)", 25, 305);
+	text("Stella Parks (+25 cookies)", 25, 305);
 	text("Price: C " + nf(b4Cost, 0, 2), 25, 323);
 	text("Level " + b4Owned, 25, 340);
 
@@ -137,7 +142,7 @@ function draw(){
 	fill(0);
 
 	textSize(14);
-	text("Alton Brown (50 CPS)", 25, 385);
+	text("Alton Brown (+50 cookies)", 25, 385);
 	text("Price: C " + nf(b5Cost, 0, 2), 25, 403);
 	text("Level " + b5Owned, 25, 420);
 
@@ -150,10 +155,9 @@ function draw(){
 	fill(0);
 	
 	textSize(14);
-	text("Claire Saffitz (100 CPS)", 25, 465);
+	text("Claire Saffitz (+100 cookies)", 25, 465);
 	text("Price: C " + nf(b6Cost, 0, 2), 25, 483);
 	text("Level " + b6Owned, 25, 500);
-	text(b6Owned, 25, 520);
 	
 	b6Cost =  100000 * pow(1.07, b6Owned);
 
@@ -161,16 +165,16 @@ function draw(){
 
   // b1 highlighter 
 	if(cookies < b1Cost) {
-			b1Color = 200
+		b1Color = 200
 	} 
 	else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 50 && mouseY > 50 + 75 && cookies >= b1Cost) {
-			b1Color = 255
+		b1Color = 255
 	} 
 	else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies < b1Cost) {
-			b1Color = 200
+		b1Color = 200
 	} 
 	else {
-		b1ClickerColor = 255
+		b1Color = 255
 	} 
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= b1Cost) {
 		b1Color = 245
@@ -254,8 +258,10 @@ function draw(){
 
 
   // lines for shop
-	for(i = 0; i < 461; i = i + 80) {
+    stroke(1);
+	for (i = 0; i < 461; i = i + 80) {
 		line(200, i + 50, 200, i + 125);
+		stroke(1);
 	}
 
   //Icons
@@ -266,12 +272,14 @@ function draw(){
 	image(b5, 201, 370, 70, 75);
 	image(b6, 201, 450, 69, 75);
 
+
+
 }
 
 // space clicker
 function keyPressed () {
 	if (key == " ") {
-    cookies++
+		cookies = cookies + 1 +  b5Owned*50 + b6Owned*100;
 }
 }
 
@@ -291,16 +299,18 @@ function mouseReleased() {
 		cookieY = cookieY + 5; 
 		cookieH = cookieH - 10; 
 		cookieW = cookieW - 10; 
+		cookies =cookies + 1 + b5Owned*50 + b6Owned*100;
+
 		setup();
+		console.log("beans");
+
 	}
 }
 
 
 // mouse clicked clicked 
 function mouseClicked() {	
-	if(mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
-		cookies++;
-	}
+
 		// Buy b1
 	if(mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= b1Cost) {
 		cookies = cookies - b1Cost;
