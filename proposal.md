@@ -23,7 +23,6 @@ I want to make a clicker game in which someone clicks on the item in the middle 
     - buy these with original money type
     - like diamonds in any IOS game meant for kids
     - timed upgrades
-    - whole other section of store 
   - pop up for the store instead of switching whole screen ✔ 
   - fun graphics instead of boring ones
   - works with different resolutions

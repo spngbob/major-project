@@ -16,6 +16,8 @@ function preload() {
 	b5 = loadImage('assets/baker_5.png');
 	b6 = loadImage('assets/baker_6.png');
 
+	tabletop = loadImage('assets/wood.jfif');
+
 
 	if (windowWidth > 700){
 		cookieW = windowWidth/5;
@@ -70,14 +72,16 @@ function setup() {
 
 function draw(){
 	background(255);
+	image(tabletop, 0, 0, windowWidth, windowHeight);
 	drawCookie();
 	textSize(15);
 	
 	// calculating clicks per minuet
-	fill(0);
+	fill(50, 16, 1);
+	textSize(20);
 	text("cookies: " + nf(cookies, 0, 2), 20, 15);
-	text("cookies/click = " +(1+b4Owned*25+b5Owned*50+b6Owned*100), 20, 45)
-	text("cps: " + nf(cps, 0, 2), 20, 30);
+	text("cookies/click: " +(1+b4Owned*25+b5Owned*50+b6Owned*100), 20, 45)
+	text("cookies/second: " + nf(cps, 0, 2), 20, 30);
 	cookies = cookies + cps * 1/60;
 	cps = b1Owned*1 + b2Owned*5 + b3Owned*10 + b4Owned*25 ;
 	
@@ -261,7 +265,6 @@ function draw(){
     stroke(1);
 	for (i = 0; i < 461; i = i + 80) {
 		line(200, i + 50, 200, i + 125);
-		stroke(1);
 	}
 
   //Icons
@@ -271,8 +274,6 @@ function draw(){
 	image(b4, 201, 291, 69, 75);
 	image(b5, 201, 370, 70, 75);
 	image(b6, 201, 450, 69, 75);
-
-
 
 }
 
@@ -347,3 +348,4 @@ function drawCookie() {
 	noStroke();
 	image(cookieImage, cookieX, cookieY, cookieW, cookieH);
 }
+
