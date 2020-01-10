@@ -1,292 +1,288 @@
 // major project
-// jenna doucette
-// started november 14th 
+
 
 
 let cookies = 0; //  balance of cookies 
-let cps = 0; //  cookies per click
+let cps = 0; //  cookies per second
 
 function preload() {
 	cookieImage = loadImage('assets/sprite.png');
 	//  upgrades
-	b1 = loadImage('assets/baker_1.png');
-	b2 = loadImage('assets/baker_2.png');
-	b3 = loadImage('assets/baker_3.png');
-	b4 = loadImage('assets/baker_4.png');
-	b5 = loadImage('assets/baker_5.png');
-	b6 = loadImage('assets/baker_6.png');
+	baker1 = loadImage('assets/baker_1.png');
+	baker2 = loadImage('assets/baker_2.png');
+	baker3 = loadImage('assets/baker_3.png');
+	baker4 = loadImage('assets/baker_4.png');
+	baker5 = loadImage('assets/baker_5.png');
+	baker6 = loadImage('assets/baker_6.png');
 
-	tabletop = loadImage('assets/wood.jfif');
+	tabletop = loadImage('assets/wood.jfif'); // loads background
 
 
-	if (windowWidth > 700){
-		cookieW = windowWidth/5;
-		cookieH = windowWidth/5; 
-		cookieX = windowWidth/2-cookieW/2;
-		cookieY = windowHeight/2-cookieH/2;}
-	else{
-		cookieW = 100;
+	if (windowWidth > 700) { // sets cookie location
+		cookieW = windowWidth / 5;
+		cookieH = windowWidth / 5;
+		cookieX = windowWidth / 2 - cookieW / 2;
+		cookieY = windowHeight / 2 - cookieH / 2;
+	}
+	else {
+		cookieW = 100;   // set a fixed cookie location that wont interfere with the store
 		cookieH = 100;
-		cookieX =  300;
+		cookieX = 300;
 		cookieY = 300;
 	}
 }
 
 
-// Baker 1
-let b1Cost = 15;
-let b1Owned = 0;
-let b1Color = 255;
+// Baker 1                   // individual cost, amount owned, and the colour of the background
+let baker1cost = 15;
+let baker1owned = 0;
+let baker1color = 255;
 
 // Baker 2
-let b2Cost = 200;
-let b2Owned = 0;
-let b2Color = 255;
+let baker2cost = 200;
+let baker2owned = 0;
+let baker2color = 255;
 
 // Baker 3
-let b3Cost = 1000;
-let b3Owned = 0;
-let b3Color = 255;
+let baker3cost = 1000;
+let baker3owned = 0;
+let baker3color = 255;
 
 // Baker 4
-let b4Cost = 2000;
-let b4Owned = 0;
-let b4Color = 255;
+let baker4cost = 2000;
+let baker4owned = 0;
+let baker4color = 255;
 
 // Baker 5
-let b5Cost = 50000
-let b5Owned = 0
-let b5Color = 255
+let baker5cost = 50000;
+let baker5owned = 0;
+let baker5color = 255;
 
 // Baker 6
-let b6Cost = 100000
-let b6Owned = 0
-let b6Color = 255
+let baker6cost = 100000;
+let baker6owned = 0;
+let baker6color = 255;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(255);
-	frameRate(60);
+	frameRate(60);    // makes it actually look like the cookie is growing and shrinking 
 
 }
 
-function draw(){
+
+function windowResized() {
+	createCanvas(windowWidth, windowHeight);
+	drawCookie();
+}
+
+function draw() {
 	background(255);
 	image(tabletop, 0, 0, windowWidth, windowHeight);
 	drawCookie();
 	textSize(15);
-	
-	// calculating clicks per minuet
+
+	// labels, titles, etx
+
 	fill(50, 16, 1);
-	textSize(20);
+	textSize(18);
+	rect(0, 0, windowWidth, 47);
+	fill(255);
+
 	text("cookies: " + nf(cookies, 0, 2), 20, 15);
-	text("cookies/click: " +(1+b4Owned*25+b5Owned*50+b6Owned*100), 20, 45)
+	text("cookies/click: " + (1 + baker4owned * 25 + baker5owned * 50 + baker6owned * 100), 20, 45);
 	text("cookies/second: " + nf(cps, 0, 2), 20, 30);
-	cookies = cookies + cps * 1/60;
-	cps = b1Owned*1 + b2Owned*5 + b3Owned*10 + b4Owned*25 ;
-	
+	textSize(26);
+	text("off brand cookie clicker", windowWidth / 2 - 120, 32.5);
 
-// I T E M S 
 
-// baker 1 
-	fill(b1Color);
-	rect(20, 50, 250, 75);
+	//cookies per minute and changing the cookie value
+	cookies = cookies + cps * 1 / 60;
+	cps = baker1owned * 1 + baker2owned * 5 + baker3owned * 10 + baker4owned * 25;
+
+
+	// I T E M S 
+
+	// baker 1 store option
+	fill(baker1color);
+	rect(20, 50, 180, 75);
 	fill(0);
 
 	textSize(14);
 	text("Buddy Valastro (1 CPS)", 25, 65);
-	text("Price: C " + nf(b1Cost, 0, 2), 25, 83);
-	text("Level " + b1Owned, 25, 100);
+	text("Price: C " + nf(baker1cost, 0, 2), 25, 83);
+	text("Level " + baker1owned, 25, 100);
 
-	b1Cost =  15 * pow(1.07, b1Owned);
+	baker1cost = 15 * pow(1.07, baker1owned);
 
-	// baker 2
+	// baker 2 store option
 
-	fill(b2Color);
-	rect(20, 130, 250, 75);
+	fill(baker2color);
+	rect(20, 130, 180, 75);
 	fill(0);
 
 	textSize(14);
 	text("Martha Stewart (5 CPS)", 25, 145);
-	text("Price: C " + nf(b2Cost, 0, 2), 25, 163);
-	text("Level " + b2Owned, 25, 180);
+	text("Price: C " + nf(baker2cost
+		, 0, 2), 25, 163);
+	text("Level " + baker2owned, 25, 180);
 
-	b2Cost =  200 * pow(1.07, b2Owned);
+	baker2cost
+		= 200 * pow(1.07, baker2owned);
 
-	// baker 3
+	// baker 3 store option
 
-	fill(b3Color);
-	rect(20, 210, 250, 75);
+	fill(baker3color);
+	rect(20, 210, 180, 75);
 	fill(0);
-	
+
 	textSize(14);
 	text("Paul Hollywood (10 CPS)", 25, 225);
-	text("Price: C " + nf(b3Cost, 0, 2), 25, 243);
-	text("Level " + b3Owned, 25, 260);
-	
-	b3Cost =  1000 * pow(1.07, b3Owned);
+	text("Price: C " + nf(baker3cost, 0, 2), 25, 243);
+	text("Level " + baker3owned, 25, 260);
 
-// baker 4
+	baker3cost = 1000 * pow(1.07, baker3owned);
 
-	fill(b4Color);
-	rect(20, 290, 250, 75);
+	// baker 4 store option
+
+	fill(baker4color);
+	rect(20, 290, 180, 75);
 	fill(0);
 
 	textSize(14);
 	text("Stella Parks (+25 cookies)", 25, 305);
-	text("Price: C " + nf(b4Cost, 0, 2), 25, 323);
-	text("Level " + b4Owned, 25, 340);
+	text("Price: C " + nf(baker4cost, 0, 2), 25, 323);
+	text("Level " + baker4owned, 25, 340);
 
-	b4Cost =  2000 * pow(1.07, b4Owned);
+	baker4cost = 2000 * pow(1.07, baker4owned);
 
-	// baker 5 
+	// baker 5  store option
 
-	fill(b5Color);
-	rect(20, 370, 250, 75);
+	fill(baker5color);
+	rect(20, 370, 180, 75);
 	fill(0);
 
 	textSize(14);
 	text("Alton Brown (+50 cookies)", 25, 385);
-	text("Price: C " + nf(b5Cost, 0, 2), 25, 403);
-	text("Level " + b5Owned, 25, 420);
+	text("Price: C " + nf(baker5cost
+		, 0, 2), 25, 403);
+	text("Level " + baker5owned, 25, 420);
 
-  b5Cost =  50000 * pow(1.07, b5Owned);
+	baker5cost = 50000 * pow(1.07, baker5owned);
 
-// baker 6
+	// baker 6 store option 
 
-	fill(b6Color);
-	rect(20, 450, 250, 75);
+	fill(baker6color);
+	rect(20, 450, 180, 75);
 	fill(0);
-	
+
 	textSize(14);
 	text("Claire Saffitz (+100 cookies)", 25, 465);
-	text("Price: C " + nf(b6Cost, 0, 2), 25, 483);
-	text("Level " + b6Owned, 25, 500);
-	
-	b6Cost =  100000 * pow(1.07, b6Owned);
+	text("Price: C " + nf(baker6cost, 0, 2), 25, 483);
+	text("Level " + baker6owned, 25, 500);
+
+	baker6cost = 100000 * pow(1.07, baker6owned);
 
 
 
-  // b1 highlighter 
-	if(cookies < b1Cost) {
-		b1Color = 200
-	} 
-	else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 50 && mouseY > 50 + 75 && cookies >= b1Cost) {
-		b1Color = 255
-	} 
-	else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies < b1Cost) {
-		b1Color = 200
-	} 
+	// baker1 highlighter    
+	if (cookies < baker1cost) {
+		baker1color = (75, 16, 1, 100); // unavailable, can't buy yet
+	}
+
 	else {
-		b1Color = 255
-	} 
-	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= b1Cost) {
-		b1Color = 245
+		baker1color = 255; // available to be purchased
 	}
-	
-	// b2 highlighter
-	if(cookies < b2Cost) {
-		b2Color = 200
-	} else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 130 && mouseY > 130 + 75 && cookies >= b2Cost) {
-		b2Color = 255
-	} else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 130 && mouseY < 130 + 75 && cookies < b2Cost) {
-		b2Color = 200
-	} else {
-		b2Color = 255
-	} 
-	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 130 && mouseY < 130 + 75 && cookies >= b2Cost) {
-		b2Color = 245
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= baker1cost) {
+		baker1color = (50, 16, 1, 50); // hovering over when available
 	}
-	
-	// b3 highlighter 
-	if (cookies < b3Cost) {
-		b3Color = 200
-	} 
-	else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 210 && mouseY > 210 + 75 && cookies >= b3Cost) {
-			b3Color = 255
-	} 
-	else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies < b3Cost) {
-		b3Color = 200
-	} 
+
+	// baker2 highlighter
+	if (cookies < baker2cost) {
+		baker2color = (50, 16, 1, 100);
+	}
+
 	else {
-		b3Color = 255
-	} 
-	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies >= b3Cost) {
-		b3Color = 245
+		baker2color = 255;
 	}
-	
-	// b4 highlighter
-	if(cookies < b4Cost) {
-		b4Color = 200
-	} 
-	else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 290 && mouseY > 290 + 75 && cookies >= b4Cost) {
-			b4Color = 255
-	} 
-	else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies < b4Cost) {
-			b4Color = 200
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 130 && mouseY < 130 + 75 && cookies >= baker2cost) {
+		baker2color = (50, 16, 1, 50);
+	}
+
+	// baker3 highlighter 
+	if (cookies < baker3cost) {
+		baker3color = (50, 16, 1, 100);
+	}
+
+	else {
+		baker3color = 255;
+	}
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies >= baker3cost) {
+		baker3color = (50, 16, 1, 50);
+	}
+
+	// baker4 highlighter
+	if (cookies < baker4cost) {
+		baker4color = (50, 16, 1, 100);
 	}
 	else {
-		b4Color = 255
-	} 
-	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies >= b4Cost) {
-		b4Color = 245
+		baker4color = 255;
 	}
-	
-	// b5 highlighter 
-	if(cookies < b5Cost) {
-		b5Color = 200
-	} else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 370 && mouseY > 370 + 75 && cookies >= b5Cost) {
-		b5Color = 255
-	} else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies < b5Cost) {
-		b5Color = 200
-	} else {
-		b5Color = 255
-	} 
-	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= b5Cost) {
-		b5Color = 245
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies >= baker4cost) {
+		baker4color = (50, 16, 1, 50);
 	}
-	
-	// b6 highlighter
-	if(cookies < b6Cost) {
-		b6Color = 200
-	} else if (mouseX < 20 && mouseX > 20 + 250 && mouseY < 450 && mouseY > 450 + 75 && cookies >= b6Cost) {
-		b6Color = 255
-	} else if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies < b6Cost) {
-		b6Color = 200
-	} else {
-		b6Color = 255
-	} 
-	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies >= b6Cost) {
-		b6Color = 245
-}
+
+	// baker5 highlighter 
+	if (cookies < baker5cost
+	) {
+		baker5color = (50, 16, 1, 100);
+	}
+	else {
+		baker5color = 255;
+	}
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= baker5cost
+	) {
+		baker5color = (50, 16, 1, 50);
+	}
+
+	// baker6 highlighter
+	if (cookies < baker6cost) {
+		baker6color = (50, 16, 1, 100);
+	}
+	else {
+		baker6color = 255;
+	}
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies >= baker6cost) {
+		baker6color = (50, 16, 1, 50);
+	}
 
 
-  // lines for shop
-    stroke(1);
+	// lines for shop
+	stroke(1);
 	for (i = 0; i < 461; i = i + 80) {
 		line(200, i + 50, 200, i + 125);
 	}
 
-  //Icons
-	image(b1, 201, 51, 69, 75);
-	image(b2, 201, 131, 69, 75);
-	image(b3, 201, 211, 69, 74);
-	image(b4, 201, 291, 69, 75);
-	image(b5, 201, 370, 70, 75);
-	image(b6, 201, 450, 69, 75);
+	//Icons
+	image(baker1, 205, 51, 69, 75);
+	image(baker2, 205, 131, 69, 75);
+	image(baker3, 205, 211, 69, 74);
+	image(baker4, 205, 291, 69, 75);
+	image(baker5, 205, 370, 70, 75);
+	image(baker6, 205, 450, 69, 75);
 
 }
 
 // space clicker
-function keyPressed () {
+function keyPressed() {
 	if (key == " ") {
-		cookies = cookies + 1 +  b5Owned*50 + b6Owned*100;
-}
+		cookies = cookies + 1 + baker5owned * 50 + baker6owned * 100;
+	}
 }
 
 
 function mousePressed() {
-	if(mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
+	if (mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
 		cookieX = cookieX - 5;
 		cookieY = cookieY - 5;
 		cookieH = cookieH + 10;
@@ -295,12 +291,12 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-	if(mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
+	if (mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
 		cookieX = cookieX + 5;
-		cookieY = cookieY + 5; 
-		cookieH = cookieH - 10; 
-		cookieW = cookieW - 10; 
-		cookies =cookies + 1 + b5Owned*50 + b6Owned*100;
+		cookieY = cookieY + 5;
+		cookieH = cookieH - 10;
+		cookieW = cookieW - 10;
+		cookies = cookies + 1 + baker5owned * 50 + baker6owned * 100;
 
 		setup();
 		console.log("beans");
@@ -310,37 +306,38 @@ function mouseReleased() {
 
 
 // mouse clicked clicked 
-function mouseClicked() {	
+function mouseClicked() {
 
-		// Buy b1
-	if(mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= b1Cost) {
-		cookies = cookies - b1Cost;
-		b1Owned++;
+	// Buy baker1
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= baker1cost) {
+		cookies = cookies - baker1cost;
+		baker1owned++;
 	}
-		//Buy b2
-	if(mouseX > 20 && mouseX < 20 + 250 && mouseY > 130 && mouseY < 130 + 75 && cookies >= b2Cost) {
-		cookies = cookies - b2Cost;
-		b2Owned++;
+	//Buy baker2
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 130 && mouseY < 130 + 75 && cookies >= baker2cost) {
+		cookies = cookies - baker2cost;
+		baker2owned++;
 	}
-		//Buy b3
-	if(mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies >= b3Cost) {
-		cookies = cookies - b3Cost;
-		b3Owned++;
+	//Buy baker3
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies >= baker3cost) {
+		cookies = cookies - baker3cost;
+		baker3owned++;
 	}
-		//Buy b4
-	if(mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies >= b4Cost) {
-		cookies = cookies - b4Cost;
-		b4Owned++;
+	//Buy baker4
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies >= baker4cost) {
+		cookies = cookies - baker4cost;
+		baker4owned++;
 	}
-		//Buy b5
-	if(mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= b5Cost) {
-		cookies = cookies - b5Cost;
-		b5Owned++;	
+	//Buy baker5
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= baker5cost
+	) {
+		cookies = cookies - baker5cost;
+		baker5owned++;
 	}
-		//Buy b6
-	if(mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies >= b6Cost) {
-		cookies = cookies - b6Cost;
-		b6Owned++;
+	//Buy baker6
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies >= baker6cost) {
+		cookies = cookies - baker6cost;
+		baker6owned++;
 	}
 }
 
