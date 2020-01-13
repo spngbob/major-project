@@ -15,7 +15,7 @@ function preload() {
 	baker5 = loadImage('assets/baker_5.png');
 	baker6 = loadImage('assets/baker_6.png');
 
-	tabletop = loadImage('assets/wood.jfif'); // loads background
+	tabletop = loadImage('assets/background2.jpg'); // loads background
 
 
 	if (windowWidth > 700) { // sets cookie location
