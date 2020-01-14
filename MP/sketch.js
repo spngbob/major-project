@@ -7,6 +7,11 @@ let cps = 0; //  cookies per second
 
 function preload() {
 
+	soundFormats('mp3');
+	click = loadSound('assets/click.mp3');
+	yay = loadSound('assets/yay.mp3');
+	chill = loadSound('assets/chill.mp3');
+
 	// sprite
 	cookieImage = loadImage('assets/sprite.png');
 
@@ -34,6 +39,9 @@ function preload() {
 		cookieY = 300;
 	}
 }
+
+
+
 
 
 // Baker 1                   // individual cost, amount owned, and the colour of the background
@@ -68,12 +76,20 @@ let baker6color = 255;
 
 
 
+
+
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(255);
 	frameRate(60);    // makes it actually look like the cookie is growing and shrinking 
-
+	click.setVolume(0.3);
+	yay.setVolume(0.075);
+	chill.setVolume(0.1);
+	chill.loop();
 }
+
+
+
 
 
 function windowResized() {
@@ -279,15 +295,20 @@ function draw() {
 	image(baker4, 205, 291, 69, 75);
 	image(baker5, 205, 370, 70, 75);
 	image(baker6, 205, 450, 69, 75);
-
 }
+
+
+
 
 // space clicker
 function keyPressed() {
 	if (key == " ") {
+		click.play();
 		cookies = cookies + 1 + baker5owned * 50 + baker6owned * 100;
 	}
 }
+
+
 
 
 function mousePressed() {
@@ -299,6 +320,9 @@ function mousePressed() {
 	}
 }
 
+
+
+
 function mouseReleased() {
 	if (mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
 		cookieX = cookieX + 5;
@@ -306,10 +330,8 @@ function mouseReleased() {
 		cookieH = cookieH - 10;
 		cookieW = cookieW - 10;
 		cookies = cookies + 1 + baker5owned * 50 + baker6owned * 100;
-
-		setup();
+		click.play();
 		console.log("beans");
-
 	}
 }
 
@@ -321,32 +343,43 @@ function mouseClicked() {
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= baker1cost) {
 		cookies = cookies - baker1cost;
 		baker1owned++;
+		yay.play();
 	}
+
 	//Buy baker2
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 130 && mouseY < 130 + 75 && cookies >= baker2cost) {
 		cookies = cookies - baker2cost;
 		baker2owned++;
+		yay.play();
 	}
+
 	//Buy baker3
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies >= baker3cost) {
 		cookies = cookies - baker3cost;
 		baker3owned++;
+		yay.play();
 	}
+
 	//Buy baker4
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies >= baker4cost) {
 		cookies = cookies - baker4cost;
 		baker4owned++;
+		yay.play();
 	}
+
 	//Buy baker5
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= baker5cost
 	) {
 		cookies = cookies - baker5cost;
 		baker5owned++;
+		yay.play();
 	}
+
 	//Buy baker6
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies >= baker6cost) {
 		cookies = cookies - baker6cost;
 		baker6owned++;
+		yay.play();
 	}
 }
 
