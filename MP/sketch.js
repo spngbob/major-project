@@ -6,7 +6,7 @@ let cookies = 0; //  balance of cookies
 let cps = 0; //  cookies per second
 
 function preload() {
-
+	// loads my sounds 
 	soundFormats('mp3');
 	click = loadSound('assets/click.mp3');
 	yay = loadSound('assets/yay.mp3');
@@ -23,28 +23,18 @@ function preload() {
 	baker5 = loadImage('assets/baker_5.png');
 	baker6 = loadImage('assets/baker_6.png');
 
+	// background
 	tabletop = loadImage('assets/background2.jpg'); // loads background
 
-
-	if (windowWidth > 700) { // sets cookie location
-		cookieW = windowWidth / 5;
-		cookieH = windowWidth / 5;
-		cookieX = windowWidth / 2 - cookieW / 2;
-		cookieY = windowHeight / 2 - cookieH / 2;
-	}
-	else {
-		cookieW = 100;   // set a fixed cookie location that wont interfere with the store
-		cookieH = 100;
-		cookieX = 300;
-		cookieY = 300;
-	}
+	cookieLocation();
 }
 
 
 
 
+// individual cost, amount owned, and the colour of the background
 
-// Baker 1                   // individual cost, amount owned, and the colour of the background
+// Baker 1 
 let baker1cost = 15;
 let baker1owned = 0;
 let baker1color = 255;
@@ -82,6 +72,8 @@ function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(255);
 	frameRate(60);    // makes it actually look like the cookie is growing and shrinking 
+	
+	// sets volumes, and prevents background music from starting every time i click on the screen
 	click.setVolume(0.3);
 	yay.setVolume(0.075);
 	chill.setVolume(0.1);
@@ -94,7 +86,22 @@ function setup() {
 
 function windowResized() {
 	createCanvas(windowWidth, windowHeight);
+	if (windowWidth > 700) { 
+		cookieW = windowWidth / 5;
+		cookieH = windowWidth / 5;
+		cookieX = windowWidth / 2 - cookieW / 2;
+		cookieY = windowHeight / 2 - cookieH / 2;
+	}
+
+	// set a fixed cookie location that wont interfere with the store
+	else {
+		cookieW = 100;   
+		cookieH = 100;
+		cookieX = 300;
+		cookieY = 300;
+	}
 	drawCookie();
+	draw();
 }
 
 
@@ -107,7 +114,7 @@ function draw() {
 	drawCookie();
 	textSize(15);
 
-	// labels, titles, etx
+	// labels, titles, etc
 
 	fill(50, 16, 1);
 	textSize(18);
@@ -126,7 +133,7 @@ function draw() {
 	cps = baker1owned * 1 + baker2owned * 5 + baker3owned * 10 + baker4owned * 25;
 
 
-	// I T E M S 
+	// I    T    E    M    S 
 
 	// baker 1 store option
 	fill(baker1color);
@@ -258,15 +265,13 @@ function draw() {
 	}
 
 	// baker5 highlighter 
-	if (cookies < baker5cost
-	) {
+	if (cookies < baker5cost) {
 		baker5color = (50, 16, 1, 100);
 	}
 	else {
 		baker5color = 255;
 	}
-	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= baker5cost
-	) {
+	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= baker5cost) {
 		baker5color = (50, 16, 1, 50);
 	}
 
@@ -300,7 +305,7 @@ function draw() {
 
 
 
-// space clicker
+// adds cookies if you press space
 function keyPressed() {
 	if (key == " ") {
 		click.play();
@@ -311,7 +316,8 @@ function keyPressed() {
 
 
 
-function mousePressed() {
+// C   o   o  k   i   e        s   i   z   e
+function mousePressed() { // shrinks cookies ! 
 	if (mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
 		cookieX = cookieX - 5;
 		cookieY = cookieY - 5;
@@ -320,10 +326,7 @@ function mousePressed() {
 	}
 }
 
-
-
-
-function mouseReleased() {
+function mouseReleased() { // makes cookie normal sized again 
 	if (mouseX > cookieX && mouseX < cookieX + cookieW && mouseY > cookieY && mouseY < cookieY + cookieH) {
 		cookieX = cookieX + 5;
 		cookieY = cookieY + 5;
@@ -336,9 +339,13 @@ function mouseReleased() {
 }
 
 
-// mouse clicked clicked 
-function mouseClicked() {
 
+
+
+
+
+// mouse clicked to buystuff 
+function mouseClicked() {
 	// Buy baker1
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= baker1cost) {
 		cookies = cookies - baker1cost;
@@ -385,6 +392,26 @@ function mouseClicked() {
 
 function drawCookie() {
 	noStroke();
+	windowResized();
 	image(cookieImage, cookieX, cookieY, cookieW, cookieH);
+
 }
 
+
+function cookieLocation(){
+	// sets cookie location
+	if (windowWidth > 700) { 
+		cookieW = windowWidth / 5;
+		cookieH = windowWidth / 5;
+		cookieX = windowWidth / 2 - cookieW / 2;
+		cookieY = windowHeight / 2 - cookieH / 2;
+	}
+
+	// set a fixed cookie location that wont interfere with the store
+	else {
+		cookieW = 100;   
+		cookieH = 100;
+		cookieX = 300;
+		cookieY = 300;
+	}
+}

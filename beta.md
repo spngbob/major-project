@@ -15,7 +15,7 @@
 - I like  the way your cookie changes size when you click it. 
 
 - The background graphic is a nice touch, too! You might want to find a higher resolution pic, though, as it gets a little blurry when it's in a big browser window. 
-    - can't find a 
+    - fixed i think
 - Are you going to add any other things to spend your cookies on? 
 
 - Could you put a sound effect on clicking the cookie? 
