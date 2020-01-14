@@ -6,7 +6,10 @@ let cookies = 0; //  balance of cookies
 let cps = 0; //  cookies per second
 
 function preload() {
+
+	// sprite
 	cookieImage = loadImage('assets/sprite.png');
+
 	//  upgrades
 	baker1 = loadImage('assets/baker_1.png');
 	baker2 = loadImage('assets/baker_2.png');
@@ -63,6 +66,8 @@ let baker6cost = 100000;
 let baker6owned = 0;
 let baker6color = 255;
 
+
+
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(255);
@@ -75,6 +80,10 @@ function windowResized() {
 	createCanvas(windowWidth, windowHeight);
 	drawCookie();
 }
+
+
+
+
 
 function draw() {
 	background(255);

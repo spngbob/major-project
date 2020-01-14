@@ -22,4 +22,7 @@
 
 ## out of class beta tester 2 - a friend with no clue how computers work
 
+- Your game is great! It's fun and easy to use the design is quick to pick up and I didn't see any bugs. The gameplay is simple but fun. The counter started climbing too quickly when I had too many cookies per second which was funny. A suggestion for improvments could be adding a sound effect when you buy a new chef but overall it was great!
+
+
 
