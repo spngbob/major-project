@@ -74,9 +74,9 @@ function setup() {
 	frameRate(60);    // makes it actually look like the cookie is growing and shrinking 
 	
 	// sets volumes, and prevents background music from starting every time i click on the screen
-	click.setVolume(0.3);
-	yay.setVolume(0.075);
-	chill.setVolume(0.1);
+	click.setVolume(0.1);
+	yay.setVolume(0.03);
+	chill.setVolume(0.05);
 	chill.loop();
 }
 
@@ -100,6 +100,8 @@ function windowResized() {
 		cookieX = 300;
 		cookieY = 300;
 	}
+
+
 	drawCookie();
 	draw();
 }
@@ -307,9 +309,10 @@ function draw() {
 
 // adds cookies if you press space
 function keyPressed() {
-	if (key == " ") {
-		click.play();
+	if (key === " ") {
 		cookies = cookies + 1 + baker5owned * 50 + baker6owned * 100;
+		click.play();
+		console.log("lentils");
 	}
 }
 
@@ -392,7 +395,6 @@ function mouseClicked() {
 
 function drawCookie() {
 	noStroke();
-	windowResized();
 	image(cookieImage, cookieX, cookieY, cookieW, cookieH);
 
 }
