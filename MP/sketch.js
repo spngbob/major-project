@@ -5,6 +5,13 @@
 let cookies = 0; //  balance of cookies 
 let cps = 0; //  cookies per second
 
+// highlighter colours
+
+let unavailable = (50, 16, 1, 100); 
+let available = 255;
+let hovering = (50, 16, 1, 50);
+
+
 // individual cost, amount owned, and the colour of the background
 	// Baker 1 
 let baker1cost = 15;
@@ -351,70 +358,80 @@ function colorOptions(){
 // color coordination for availability and mouse location
 	// baker1 highlighter    
 	if (cookies < baker1cost) {
-		baker1color = (75, 16, 1, 100); // unavailable, can't buy yet
+		baker1color =  unavailable; // unavailable, can't buy yet
 	}
 
 	else {
-		baker1color = 255; // available to be purchased
+		baker1color = available; // available to be purchased
 	}
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 50 && mouseY < 50 + 75 && cookies >= baker1cost) {
-		baker1color = (50, 16, 1, 50); // hovering over when available
+		baker1color = hovering; // hovering over when available
 	}
+
+
 
 	// baker2 highlighter
 	if (cookies < baker2cost) {
-		baker2color = (50, 16, 1, 100);
+		baker2color =  unavailable;
 	}
 
 	else {
-		baker2color = 255;
+		baker2color = available;
 	}
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 130 && mouseY < 130 + 75 && cookies >= baker2cost) {
-		baker2color = (50, 16, 1, 50);
+		baker2color = hovering;
 	}
+
+
 
 	// baker3 highlighter 
 	if (cookies < baker3cost) {
-		baker3color = (50, 16, 1, 100);
+		baker3color =  unavailable;
 	}
 
 	else {
-		baker3color = 255;
+		baker3color = available;
 	}
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 210 && mouseY < 210 + 75 && cookies >= baker3cost) {
-		baker3color = (50, 16, 1, 50);
+		baker3color = hovering;
 	}
+
+
 
 	// baker4 highlighter
 	if (cookies < baker4cost) {
-		baker4color = (50, 16, 1, 100);
+		baker4color =  unavailable;
 	}
 	else {
-		baker4color = 255;
+		baker4color = available;
 	}
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 290 && mouseY < 290 + 75 && cookies >= baker4cost) {
-		baker4color = (50, 16, 1, 50);
+		baker4color = hovering;
 	}
+
+
 
 	// baker5 highlighter 
 	if (cookies < baker5cost) {
-		baker5color = (50, 16, 1, 100);
+		baker5color =  unavailable;
 	}
 	else {
-		baker5color = 255;
+		baker5color = available;
 	}
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 370 && mouseY < 370 + 75 && cookies >= baker5cost) {
-		baker5color = (50, 16, 1, 50);
+		baker5color = hovering;
 	}
+
+
 
 	// baker6 highlighter
 	if (cookies < baker6cost) {
-		baker6color = (50, 16, 1, 100);
+		baker6color =  unavailable;
 	}
 	else {
-		baker6color = 255;
+		baker6color = available;
 	}
 	if (mouseX > 20 && mouseX < 20 + 250 && mouseY > 450 && mouseY < 450 + 75 && cookies >= baker6cost) {
-		baker6color = (50, 16, 1, 50);
+		baker6color = hovering;
 	}
 }
