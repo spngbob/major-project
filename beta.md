@@ -1,7 +1,3 @@
-# beta testing feed back
-## in class beta tester, ie Josh
-- "could use more sound"
-- "10/10 would click again" 
 
 ## out of class beta tester 1 - my dad, ie dude with a computer science degree
 
@@ -19,6 +15,15 @@
 - Are you going to add any other things to spend your cookies on? 
 
 - Could you put a sound effect on clicking the cookie? 
+
+
+
+# beta testing feed back
+## in class beta tester, ie Josh
+- "could use more sound"
+- "10/10 would click again" 
+
+
 
 ## out of class beta tester 2 - a friend with no clue how computers work
 
